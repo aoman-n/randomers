@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -29,6 +30,15 @@ module.exports = {
         ],
       },
       {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader?modules&localIdentName=[name]__[local]__[hash:base64:5]',
+          ],
+        }),
+      },
+      {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         use: [
           {
@@ -50,6 +60,7 @@ module.exports = {
     },
   },
   plugins: [
+    new ExtractTextPlugin({ filename: 'style.css', allChunks: true }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: 'index.html',

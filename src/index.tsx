@@ -1,11 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+// import { createStore } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 // import { rootReducer } from './modules';
 import App from './App';
+
+import './styles/reset.css';
 
 // const store = createStore(rootReducer);
 

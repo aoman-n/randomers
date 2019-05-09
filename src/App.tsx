@@ -6,9 +6,14 @@ import { Switch, Route, Redirect } from 'react-router';
 import Home from 'components/Home';
 import InputCampanyName from 'components/InputCampanyName';
 
+const headerStyle = css`
+  background: gray;
+  color: white;
+`;
+
 const App: FC = () => (
   <div>
-    <header>
+    <header css={headerStyle}>
       <h1>title</h1>
     </header>
     <InputCampanyName />
