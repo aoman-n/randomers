@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
 import './styles/reset.css';
+import 'semantic-ui-css/semantic.min.css';
 
 // const store = createStore(rootReducer);
 

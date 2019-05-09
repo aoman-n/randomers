@@ -34,12 +34,14 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader?modules&localIdentName=[name]__[local]__[hash:base64:5]',
+            {
+              loader: 'css-loader',
+            },
           ],
         }),
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
         use: [
           {
             loader: 'url-loader',
@@ -60,7 +62,10 @@ module.exports = {
     },
   },
   plugins: [
-    new ExtractTextPlugin({ filename: 'style.css', allChunks: true }),
+    new ExtractTextPlugin({
+      filename: 'static/css/style.css',
+      allChunks: true,
+    }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: 'index.html',
