@@ -4,7 +4,7 @@ import { jsx, css } from '@emotion/core';
 import { Switch, Route, Redirect } from 'react-router';
 
 import Home from 'components/Home';
-import InputCampanyName from 'components/InputCampanyName';
+import Members from 'components/Members';
 
 const headerStyle = css`
   background: gray;
@@ -16,10 +16,11 @@ const App: FC = () => (
     <header css={headerStyle}>
       <h1>title</h1>
     </header>
-    <InputCampanyName />
     <Switch>
+      <Route path="/:companyName/members" component={Members} />
+      <Route path="/confirmation" />
+      <Route path="/random" />
       <Route path="/" component={Home} />
-      <Route path="/:companyName/members" />
       <Redirect to="/" />
     </Switch>
   </div>
