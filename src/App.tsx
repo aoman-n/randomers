@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from 'react-router';
 
 import Home from 'components/Home';
 import Members from 'components/Members';
+// import Members from 'containers/Members';
 
 const headerStyle = css`
   background: gray;
