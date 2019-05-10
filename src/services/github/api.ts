@@ -11,7 +11,7 @@ const DEFAULT_CONFIG: ApiConfig = {
   timeout: 7000,
 };
 
-const getMembersFactory = (optionConfig?: ApiConfig) => {
+const getMembersFactory = (optionConfig: Partial<ApiConfig> = {}) => {
   const config: ApiConfig = {
     ...DEFAULT_CONFIG,
     ...optionConfig,
