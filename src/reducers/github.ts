@@ -22,19 +22,19 @@ const githubReducer: Reducer<GithubState, GithubActoion> = (
   action: GithubActoion,
 ) => {
   switch (action.type) {
-    case ActionType.GET_MEMBER_START:
+    case ActionType.GET_MEMBERS_START:
       return {
         ...state,
         isLoading: true,
         organizationName: action.payload.params.organizationName,
       };
-    case ActionType.GET_MEMBER_SUCCEED:
+    case ActionType.GET_MEMBERS_SUCCEED:
       return {
         ...state,
         users: action.payload.result.users,
         isLoading: false,
       };
-    case ActionType.GET_MEMBER_FAIL:
+    case ActionType.GET_MEMBERS_FAIL:
       return {
         ...state,
         error: action.payload.error,
