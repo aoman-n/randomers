@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { jsx, css } from '@emotion/core';
 // import { Link } from 'react-router-dom';
 
+import Spinner from 'components/common/Spinner';
 import { User } from '../services/github/models';
 
 export interface MembersProps {
@@ -19,7 +20,7 @@ const Members: FC<MembersProps> = ({
   <div>
     <h3>{organizationName}のMembers:</h3>
     {isLoading ? (
-      <div>isLoading...</div>
+      <Spinner />
     ) : (
       <div>
         {users.map((user: User) => (
