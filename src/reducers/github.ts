@@ -1,37 +1,44 @@
+import { AxiosError } from 'axios';
 import { Reducer } from 'redux';
+import { User } from '../services/github/models';
+import * as ActionType from '../actions/githubConstants';
+import { GithubActoion } from '../actions/github';
 
-interface TestAction {
-  type: 'testActionType';
+interface GithubState {
+  organizationName: string;
+  users: User[];
+  isLoading: boolean;
+  error?: AxiosError | null;
 }
 
-interface TestAction2 {
-  type: 'testActionType2';
-}
-
-type Action = TestAction | TestAction2;
-
-interface TestState {
-  organization: string;
-}
-
-const initialState = {
-  organization: 'testName',
+const initialState: GithubState = {
+  organizationName: '',
+  users: [],
+  isLoading: false,
 };
 
-const testReducer: Reducer<TestState, Action> = (
-  state: TestState = initialState,
-  action: Action,
-): TestState => {
+const githubReducer: Reducer<GithubState, GithubActoion> = (
+  state: GithubState = initialState,
+  action: GithubActoion,
+) => {
   switch (action.type) {
-    case 'testActionType':
+    case ActionType.GET_MEMBER_START:
       return {
         ...state,
-        organization: 'update!',
+        isLoading: true,
+        organizationName: action.payload.params.organizationName,
       };
-    case 'testActionType2':
+    case ActionType.GET_MEMBER_SUCCEED:
       return {
         ...state,
-        organization: 'update2!!',
+        users: action.payload.result.users,
+        isLoading: false,
+      };
+    case ActionType.GET_MEMBER_FAIL:
+      return {
+        ...state,
+        error: action.payload.error,
+        isLoading: false,
       };
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -42,4 +49,4 @@ const testReducer: Reducer<TestState, Action> = (
   }
 };
 
-export default testReducer;
+export default githubReducer;
