@@ -6,7 +6,8 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { RootStateType } from '../reducers';
 import { User } from '../services/github/models';
 import { getMembers } from '../actions/github';
-import Members, { MembersProps } from '../components/Members';
+import { addMembers } from '../actions/random';
+import Members from '../components/Members';
 
 interface StateProps {
   users: User[];
@@ -15,6 +16,7 @@ interface StateProps {
 
 interface DispatchProps {
   getMembersStart: (organization: string) => void;
+  addMembers: (users: User[]) => void;
 }
 
 type EnhancedMembersProps = StateProps &
@@ -31,6 +33,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
     {
       getMembersStart: (organizationName: string) =>
         getMembers.start({ organizationName }),
+      addMembers: (users: User[]) => addMembers({ users }),
     },
     dispatch,
   );
@@ -39,16 +42,21 @@ const MembersContainer: FC<EnhancedMembersProps> = ({
   users,
   isLoading,
   getMembersStart,
+  addMembers,
   match,
+  // history,
 }) => {
   const { organizationName } = match.params;
 
+  // const handleAddButton = () => {
+  //   history.push('/confirmation');
+  // };
+
   useEffect(() => {
-    console.log('useEffect!!!!');
     getMembersStart(organizationName);
   }, []);
 
-  return <Members {...{ users, isLoading, organizationName }} />;
+  return <Members {...{ users, isLoading, organizationName, addMembers }} />;
 };
 
 export default withRouter(

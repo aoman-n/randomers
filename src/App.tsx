@@ -6,6 +6,7 @@ import { Switch, Route, Redirect } from 'react-router';
 import Home from 'components/Home';
 // import Members from 'components/Members';
 import Members from 'containers/Members';
+import Confirmation from 'components/Confirmation';
 import Header from 'components/Header';
 import NotFound from 'components/NotFound';
 
@@ -15,7 +16,7 @@ const App: FC = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/:organizationName/members" component={Members} />
-      <Route path="/confirmation" />
+      <Route path="/confirmation" component={Confirmation} />
       <Route path="/random" />
       <Route path="/" component={NotFound} />
       {/* <Redirect to="/" /> */}

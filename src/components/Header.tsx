@@ -2,6 +2,7 @@
 import { FC } from 'react';
 import { jsx, css } from '@emotion/core';
 import { Header, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 interface HeaderComponentProps {
   title: string;
@@ -17,8 +18,10 @@ const headerText = css`
 
 const HeaderComponent: FC<HeaderComponentProps> = ({ title = '' }) => (
   <Segment clearing css={header}>
-    <Header as="h2" floated="left" css={headerText}>
-      {title}
+    <Header as="h2" floated="left">
+      <Link to="/" css={headerText}>
+        {title}
+      </Link>
     </Header>
   </Segment>
 );
