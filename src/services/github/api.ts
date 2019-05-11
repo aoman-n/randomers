@@ -2,12 +2,12 @@ import axios from 'axios';
 import { User } from './models';
 
 interface ApiConfig {
-  baseUrl: string;
+  baseURL: string;
   timeout: number;
 }
 
 const DEFAULT_CONFIG: ApiConfig = {
-  baseUrl: 'https://github.com',
+  baseURL: 'https://api.github.com',
   timeout: 7000,
 };
 
@@ -16,6 +16,7 @@ const getMembersFactory = (optionConfig: Partial<ApiConfig> = {}) => {
     ...DEFAULT_CONFIG,
     ...optionConfig,
   };
+
   const instance = axios.create(config);
 
   const getMembers = async (organizationName: string) => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
@@ -13,8 +13,18 @@ import App from './App';
 import './styles/reset.css';
 import 'semantic-ui-css/semantic.min.css';
 
-const sagaMiddleware = createSagaMiddleware();
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+/* eslint-disable no-underscore-dangle, @typescript-eslint/no-explicit-any */
+const composeEnhancers =
+  process.env.NODE_ENV === 'development' &&
+  typeof window === 'object' &&
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+    : compose;
+/* eslint-enable */
+
+const sagaMiddleWare = createSagaMiddleware();
+const enhancer = composeEnhancers(applyMiddleware(sagaMiddleWare));
+const store = createStore(rootReducer, enhancer);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -22,7 +32,7 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById('root') as HTMLElement,
 );
 
-sagaMiddleware.run(rootSaga);
+sagaMiddleWare.run(rootSaga);
