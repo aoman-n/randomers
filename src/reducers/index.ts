@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import testReducer from './github';
+import github, { GithubState } from './github';
+
+export interface RootStateType {
+  github: GithubState;
+}
 
 export default combineReducers({
-  test: testReducer,
+  github,
 });

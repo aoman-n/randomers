@@ -5,14 +5,28 @@ import { jsx, css } from '@emotion/core';
 
 import { User } from '../services/github/models';
 
-interface MembersProps {
-  users?: User[];
+export interface MembersProps {
+  organizationName: string;
+  users: User[];
   isLoading?: boolean;
 }
 
-const Members: FC<MembersProps> = () => (
+const Members: FC<MembersProps> = ({
+  organizationName = '<会社名>',
+  users = [],
+  isLoading = false,
+}) => (
   <div>
-    <h3>Members:</h3>
+    <h3>{organizationName}のMembers:</h3>
+    {isLoading ? (
+      <div>isLoading...</div>
+    ) : (
+      <div>
+        {users.map((user: User) => (
+          <p>{user.login}</p>
+        ))}
+      </div>
+    )}
   </div>
 );
 
