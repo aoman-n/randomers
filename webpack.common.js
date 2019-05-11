@@ -60,6 +60,11 @@ module.exports = {
       src: path.join(__dirname, '/src'),
       components: path.join(__dirname, '/src/components/'),
       containers: path.join(__dirname, '/src/containers/'),
+      actions: path.join(__dirname, '/src/actions/'),
+      reducers: path.join(__dirname, '/src/reducers/'),
+      sagas: path.join(__dirname, '/src/sagas/'),
+      services: path.join(__dirname, '/src/services/'),
+      styles: path.join(__dirname, '/src/styles/'),
     },
   },
   plugins: [
