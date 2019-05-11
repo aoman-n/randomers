@@ -4,10 +4,11 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: path.join(__dirname, '/src/index.tsx'),
   output: {
-    filename: 'static/js/bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/bundle.js',
+    path: path.join(__dirname, '/dist'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -56,14 +57,14 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
-      src: path.resolve(__dirname, './src'),
-      components: path.resolve(__dirname, './src/components/'),
-      containers: path.resolve(__dirname, './src/containers/'),
+      src: path.join(__dirname, '/src'),
+      components: path.join(__dirname, '/src/components/'),
+      containers: path.join(__dirname, '/src/containers/'),
     },
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: 'static/css/style.css',
+      filename: 'css/style.css',
       allChunks: true,
     }),
     new HtmlWebpackPlugin({
