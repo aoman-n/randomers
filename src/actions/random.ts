@@ -27,8 +27,9 @@ export const start = () => ({
   type: ActionType.START as typeof ActionType.START,
 });
 
-export const stop = () => ({
+export const stop = (params: ApointUserParams) => ({
   type: ActionType.STOP as typeof ActionType.STOP,
+  payload: { params },
 });
 
 export const apointUser = (params: ApointUserParams) => ({

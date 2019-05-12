@@ -6,12 +6,13 @@ import { RandomAction } from 'actions/random';
 export interface RandomState {
   users: User[];
   isActive: boolean;
-  apointUser?: User;
+  apointUser: User | null;
 }
 
 const initialState: RandomState = {
   users: [],
   isActive: false,
+  apointUser: null,
 };
 
 const randomReducer: Reducer<RandomState, RandomAction> = (
@@ -35,11 +36,13 @@ const randomReducer: Reducer<RandomState, RandomAction> = (
       return {
         ...state,
         isActive: true,
+        apointUser: null,
       };
     case ActionType.STOP:
       return {
         ...state,
         isActive: false,
+        apointUser: action.payload.params.user,
       };
     case ActionType.APOINT_USER:
       return {
