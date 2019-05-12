@@ -24,6 +24,13 @@ const randomReducer: Reducer<RandomState, RandomAction> = (
         ...state,
         users: action.payload.params.users,
       };
+    case ActionType.REMOVE_MEMBER:
+      return {
+        ...state,
+        users: state.users.filter(
+          user => user.login !== action.payload.params.userLogin,
+        ),
+      };
     case ActionType.START:
       return {
         ...state,

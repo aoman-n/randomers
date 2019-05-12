@@ -4,9 +4,8 @@ import { jsx } from '@emotion/core';
 import { Switch, Route, Redirect } from 'react-router';
 
 import Home from 'components/Home';
-// import Members from 'components/Members';
 import Members from 'containers/Members';
-import Confirmation from 'components/Confirmation';
+import Confirmation from 'containers/Confirmation';
 import Header from 'components/Header';
 import NotFound from 'components/NotFound';
 
