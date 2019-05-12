@@ -6,6 +6,7 @@ import { Card, Image, Button, Checkbox } from 'semantic-ui-react';
 // import { RouteComponentProps, withRouter } from 'react-router';
 
 import Spinner from 'components/common/Spinner';
+import Layout from './Layout';
 import { User } from '../services/github/models';
 
 export interface MembersProps {
@@ -34,7 +35,7 @@ const Members: FC<MembersProps> = ({
   };
 
   return (
-    <div>
+    <Layout>
       <Button onClick={() => handleAddButton(checkedUesrs)}>Add</Button>
       <h3>{organizationName}のMembers:</h3>
       {isLoading ? (
@@ -60,7 +61,7 @@ const Members: FC<MembersProps> = ({
           ))}
         </Card.Group>
       )}
-    </div>
+    </Layout>
   );
 };
 

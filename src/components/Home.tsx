@@ -2,16 +2,13 @@
 import { FC } from 'react';
 import { jsx, css } from '@emotion/core';
 import GithubInput from './GithubInput';
-
-const container = css`
-  padding: 16px 24px;
-`;
+import Layout from './Layout';
 
 const Home: FC = () => (
-  <div css={container}>
+  <Layout>
     <GithubInput />
     <p>home</p>
-  </div>
+  </Layout>
 );
 
 export default Home;

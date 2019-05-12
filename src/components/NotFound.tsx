@@ -2,12 +2,13 @@
 import { FC } from 'react';
 import { jsx, css } from '@emotion/core';
 import { Link } from 'react-router-dom';
+import Layout from './Layout';
 
 const NotFound: FC = () => (
-  <div>
+  <Layout>
     <h3>Not Found Page ...</h3>
     <Link to="/" />
-  </div>
+  </Layout>
 );
 
 export default NotFound;

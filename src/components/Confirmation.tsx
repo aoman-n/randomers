@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { Card, Image, Button, Icon } from 'semantic-ui-react';
 import { User } from '../services/github/models';
 
+import Layout from './Layout';
+
 interface ConfirmationProps {
   users: User[];
   dispatchRemoveMember: (userLogin: string) => void;
@@ -14,7 +16,7 @@ const Confirmation: FC<ConfirmationProps> = ({
   users,
   dispatchRemoveMember,
 }) => (
-  <div>
+  <Layout>
     <p>confirmation page:</p>
     <Card.Group>
       {users.map(user => (
@@ -38,7 +40,7 @@ const Confirmation: FC<ConfirmationProps> = ({
     <Link to="/random">
       <Button color="blue">ランダムを開始する</Button>
     </Link>
-  </div>
+  </Layout>
 );
 
 export default Confirmation;
