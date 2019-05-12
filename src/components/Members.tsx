@@ -3,7 +3,7 @@ import { FC, useState, ChangeEvent, FormEvent, SyntheticEvent } from 'react';
 import { jsx, css } from '@emotion/core';
 import { Card, Image, Button, Checkbox } from 'semantic-ui-react';
 // import { Link } from 'react-router-dom';
-import { RouteComponentProps, withRouter } from 'react-router';
+// import { RouteComponentProps, withRouter } from 'react-router';
 
 import Spinner from 'components/common/Spinner';
 import { User } from '../services/github/models';
@@ -12,38 +12,30 @@ export interface MembersProps {
   organizationName: string;
   users: User[];
   isLoading?: boolean;
-  addMembers: (users: User[]) => void;
+  handleAddButton: (checkedUesrs: string[]) => void;
 }
 
-type EnhancedMemberProps = MembersProps & RouteComponentProps;
-
-const Members: FC<EnhancedMemberProps> = ({
+const Members: FC<MembersProps> = ({
   organizationName = '<会社名>',
   users = [],
   isLoading = false,
-  history,
-  addMembers,
+  handleAddButton,
 }) => {
   const initialState: string[] = [];
   const [checkedUesrs, checkUser] = useState(initialState);
 
-  const handleAddButton = () => {
-    const addUsers: User[] = users.filter(user =>
-      checkedUesrs.includes(user.login),
-    );
-    addMembers(addUsers);
-    history.push('/confirmation');
-  };
-
   const handleChange = (e: FormEvent<EventTarget>) => {
     const target = e.target as HTMLInputElement;
-    console.log(target.name);
-    checkUser(checkedUesrs.concat(target.name));
+    if (target.checked) {
+      checkUser(checkedUesrs.concat(target.name));
+    } else {
+      checkUser(checkedUesrs.filter(user => user !== target.name));
+    }
   };
 
   return (
     <div>
-      <Button onClick={handleAddButton}>Add</Button>
+      <Button onClick={() => handleAddButton(checkedUesrs)}>Add</Button>
       <h3>{organizationName}のMembers:</h3>
       {isLoading ? (
         <Spinner />
@@ -72,4 +64,4 @@ const Members: FC<EnhancedMemberProps> = ({
   );
 };
 
-export default withRouter(Members);
+export default Members;

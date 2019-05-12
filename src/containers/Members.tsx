@@ -16,7 +16,7 @@ interface StateProps {
 
 interface DispatchProps {
   getMembersStart: (organization: string) => void;
-  addMembers: (users: User[]) => void;
+  dispatchAddMembers: (users: User[]) => void;
 }
 
 type EnhancedMembersProps = StateProps &
@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
     {
       getMembersStart: (organizationName: string) =>
         getMembers.start({ organizationName }),
-      addMembers: (users: User[]) => addMembers({ users }),
+      dispatchAddMembers: (users: User[]) => addMembers({ users }),
     },
     dispatch,
   );
@@ -42,21 +42,35 @@ const MembersContainer: FC<EnhancedMembersProps> = ({
   users,
   isLoading,
   getMembersStart,
-  addMembers,
+  dispatchAddMembers,
   match,
-  // history,
+  history,
 }) => {
   const { organizationName } = match.params;
-
-  // const handleAddButton = () => {
-  //   history.push('/confirmation');
-  // };
 
   useEffect(() => {
     getMembersStart(organizationName);
   }, []);
 
-  return <Members {...{ users, isLoading, organizationName, addMembers }} />;
+  const handleAddButton = (checkedUesrs: string[]) => {
+    const addUsers: User[] = users.filter(user =>
+      checkedUesrs.includes(user.login),
+    );
+    dispatchAddMembers(addUsers);
+    history.push('/confirmation');
+  };
+
+  return (
+    <Members
+      {...{
+        users,
+        isLoading,
+        organizationName,
+        dispatchAddMembers,
+        handleAddButton,
+      }}
+    />
+  );
 };
 
 export default withRouter(
