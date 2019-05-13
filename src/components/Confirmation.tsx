@@ -12,13 +12,17 @@ interface ConfirmationProps {
   dispatchRemoveMember: (userLogin: string) => void;
 }
 
+const container = css`
+  margin-bottom: 20px !important;
+`;
+
 const Confirmation: FC<ConfirmationProps> = ({
   users,
   dispatchRemoveMember,
 }) => (
   <Layout>
-    <p>confirmation page:</p>
-    <Card.Group>
+    <h3>追加したメンバー:</h3>
+    <Card.Group css={container}>
       {users.map(user => (
         <Card key={user.id}>
           <Card.Content>

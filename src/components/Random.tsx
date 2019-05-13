@@ -38,7 +38,7 @@ const Random: FC<RandomProps> = ({
   const handleStartButton = () => {
     const id: NodeJS.Timer = setInterval(() => {
       updateActiveUser();
-    }, 50);
+    }, 10);
     updateIntervalId(id);
     startRandom();
   };
@@ -54,7 +54,7 @@ const Random: FC<RandomProps> = ({
 
   return (
     <Layout>
-      <p>random page: </p>
+      <h3>ボタンを押してスタートしてください。</h3>
       {isActive ? (
         <Button color="red" onClick={handleStopButton}>
           stop

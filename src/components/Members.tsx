@@ -36,7 +36,9 @@ const Members: FC<MembersProps> = ({
 
   return (
     <Layout>
-      <Button onClick={() => handleAddButton(checkedUesrs)}>Add</Button>
+      <Button color="teal" onClick={() => handleAddButton(checkedUesrs)}>
+        Add
+      </Button>
       <h3>{organizationName}のMembers:</h3>
       {isLoading ? (
         <Spinner />

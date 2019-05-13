@@ -7,7 +7,6 @@ import Layout from './Layout';
 const Home: FC = () => (
   <Layout>
     <GithubInput />
-    <p>home</p>
   </Layout>
 );
 

@@ -23,6 +23,7 @@ const githubReducer: Reducer<GithubState, GithubActoion> = (
     case ActionType.GET_MEMBERS_START:
       return {
         ...state,
+        users: [],
         isLoading: true,
       };
     case ActionType.GET_MEMBERS_SUCCEED:
