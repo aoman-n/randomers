@@ -33,7 +33,7 @@ const Random: FC<RandomProps> = ({
   apointUser,
 }) => {
   const [activeUser, updateActiveUser] = useRandomUser(users);
-  const [intervalId, updateIntervalId] = useState('' as any);
+  const [intervalId, updateIntervalId] = useState<NodeJS.Timer | null>(null);
 
   const handleStartButton = () => {
     const id: NodeJS.Timer = setInterval(() => {
@@ -43,8 +43,12 @@ const Random: FC<RandomProps> = ({
     startRandom();
   };
 
+  /* 参考:https://blog.kubosho.com/entry/setinterval-trap-on-typescript/ */
   const handleStopButton = () => {
-    clearInterval(intervalId);
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+    updateIntervalId(null);
     stopRandom(activeUser);
   };
 
