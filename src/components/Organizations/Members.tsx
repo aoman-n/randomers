@@ -6,8 +6,8 @@ import { Card, Image, Button, Checkbox } from 'semantic-ui-react';
 // import { RouteComponentProps, withRouter } from 'react-router';
 
 import Spinner from 'components/common/Spinner';
-import Layout from './Layout';
-import { User } from '../services/github/models';
+import Layout from '../Layout';
+import { User } from '../../services/github/models';
 
 export interface MembersProps {
   organizationName: string;
@@ -39,29 +39,30 @@ const Members: FC<MembersProps> = ({
       <Button color="teal" onClick={() => handleAddButton(checkedUesrs)}>
         Add
       </Button>
-      <h3>{organizationName}のMembers:</h3>
       {isLoading ? (
         <Spinner />
       ) : (
-        <Card.Group>
-          {users.map(user => (
-            <Card key={user.id}>
-              <Card.Content>
-                <Image floated="right" size="mini" src={user.avatar_url} />
-                <Card.Header>{user.login}</Card.Header>
-              </Card.Content>
-              <Card.Content extra>
-                <Checkbox
-                  name={user.login}
-                  id={user.id}
-                  value={user.login}
-                  label={user.login}
-                  onChange={handleChange}
-                />
-              </Card.Content>
-            </Card>
-          ))}
-        </Card.Group>
+        <div>
+          <Card.Group>
+            {users.map(user => (
+              <Card key={user.id}>
+                <Card.Content>
+                  <Image floated="right" size="mini" src={user.avatar_url} />
+                  <Card.Header>{user.login}</Card.Header>
+                </Card.Content>
+                <Card.Content extra>
+                  <Checkbox
+                    name={user.login}
+                    id={user.id}
+                    value={user.login}
+                    label={user.login}
+                    onChange={handleChange}
+                  />
+                </Card.Content>
+              </Card>
+            ))}
+          </Card.Group>
+        </div>
       )}
     </Layout>
   );

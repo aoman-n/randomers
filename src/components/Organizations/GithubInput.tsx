@@ -18,7 +18,7 @@ const InputCampanyName: FC = () => {
 
   return (
     <div>
-      <h3>Githubから検索: 会社名を入力してください。</h3>
+      <h3>Githubから検索: 会社名を入力してください。ee</h3>
       <div>
         <Input
           // action={{ icon: 'search' }}

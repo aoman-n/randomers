@@ -5,12 +5,14 @@ import * as ActionType from '../actions/githubConstants';
 import { GithubActoion } from '../actions/github';
 
 export interface GithubState {
+  organizationName: string;
   users: User[];
   isLoading: boolean;
   error?: AxiosError | null;
 }
 
 const initialState: GithubState = {
+  organizationName: '',
   users: [],
   isLoading: false,
 };
@@ -29,6 +31,7 @@ const githubReducer: Reducer<GithubState, GithubActoion> = (
     case ActionType.GET_MEMBERS_SUCCEED:
       return {
         ...state,
+        organizationName: action.payload.params.organizationName,
         users: action.payload.result.users,
         isLoading: false,
       };
