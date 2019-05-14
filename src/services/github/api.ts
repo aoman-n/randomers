@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { User } from './models';
+import qs from 'qs';
+import { User, SearchUserResult, SearchUser } from './models';
 
 interface ApiConfig {
   baseURL: string;
@@ -11,7 +12,7 @@ const DEFAULT_CONFIG: ApiConfig = {
   timeout: 7000,
 };
 
-const getMembersFactory = (optionConfig: Partial<ApiConfig> = {}) => {
+export const getMembersFactory = (optionConfig: Partial<ApiConfig> = {}) => {
   const config: ApiConfig = {
     ...DEFAULT_CONFIG,
     ...optionConfig,
@@ -36,4 +37,28 @@ const getMembersFactory = (optionConfig: Partial<ApiConfig> = {}) => {
   return getMembers;
 };
 
-export default getMembersFactory;
+export const searchUserFactory = (optionConfig: Partial<ApiConfig> = {}) => {
+  const config: ApiConfig = {
+    ...DEFAULT_CONFIG,
+    ...optionConfig,
+  };
+
+  const instance = axios.create(config);
+
+  const searchUser = async (q: string) => {
+    try {
+      const params = qs.stringify({ q });
+      const response = await instance.get(`/search/users?${params}`);
+      if (response.status !== 200) {
+        throw new Error('Server Error');
+      }
+      const users: SearchUser[] = response.data.items;
+
+      return users;
+    } catch (err) {
+      throw err;
+    }
+  };
+
+  return searchUser;
+};
