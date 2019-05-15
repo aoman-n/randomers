@@ -2,7 +2,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { jsx, css } from '@emotion/core';
-import { Card, Image, Button, Icon } from 'semantic-ui-react';
+import { Card, Image, Button, Icon, List } from 'semantic-ui-react';
 import { User } from '../../reducers/github';
 
 import pages from '../../pages';
@@ -38,9 +38,12 @@ const RandomUsers: FC<RandomUsersProps> = ({ users, dispatchRemoveMember }) => (
       ))}
     </Card.Group>
     <div css={links}>
-      <Link to={pages.organizations.path}>
-        <Button>会社検索からユーザーを追加</Button>
-      </Link>
+      <List>
+        <List.Header>もっとメンバーを追加</List.Header>
+        <List.Item>
+          <Link to={pages.organizations.path}>会社から検索</Link>
+        </List.Item>
+      </List>
       {users.length > 1 && (
         <Link to={pages.random.path}>
           <Button color="twitter">{pages.random.title}</Button>

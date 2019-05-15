@@ -2,11 +2,11 @@
 import { FC } from 'react';
 import { jsx, css } from '@emotion/core';
 import { Link } from 'react-router-dom';
-import { Card, Image, Button, Icon } from 'semantic-ui-react';
-// import { User } from '../services/github/models';
+import { Card, Image, Button, Icon, List } from 'semantic-ui-react';
 import { User } from '../reducers/github';
 
 import Layout from './Layout';
+import pages from '../pages';
 
 interface ConfirmationProps {
   users: User[];
@@ -42,6 +42,15 @@ const Confirmation: FC<ConfirmationProps> = ({
         </Card>
       ))}
     </Card.Group>
+    <List>
+      <List.Header>もっとメンバーを追加</List.Header>
+      <List.Item>
+        <Link to={pages.organizations.path}>会社から検索</Link>
+      </List.Item>
+      <List.Item>
+        <Link to={pages.users.path}>ユーザーIDから検索</Link>
+      </List.Item>
+    </List>
     <Link to="/random">
       <Button color="blue">ランダムを開始する</Button>
     </Link>
