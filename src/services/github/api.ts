@@ -27,9 +27,14 @@ export const getMembersFactory = (optionConfig: Partial<ApiConfig> = {}) => {
       if (response.status !== 200) {
         throw new Error('Server Error');
       }
-      const members: User[] = response.data;
 
-      return members;
+      const users: FormatedUser[] = response.data.map((user: User) => ({
+        id: user.id,
+        login: user.login,
+        avatarUrl: user.avatar_url,
+      }));
+
+      return users;
     } catch (err) {
       throw err;
     }
