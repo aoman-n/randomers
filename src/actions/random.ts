@@ -6,6 +6,10 @@ export interface AddMembersParams {
   users: User[];
 }
 
+export interface AddMemberParams {
+  user: User;
+}
+
 export interface RemoveMemberParams {
   userLogin: string;
 }
@@ -16,6 +20,11 @@ interface ApointUserParams {
 
 export const addMembers = (params: AddMembersParams) => ({
   type: ActionType.ADD_MEMBERS as typeof ActionType.ADD_MEMBERS,
+  payload: { params },
+});
+
+export const addMember = (params: AddMemberParams) => ({
+  type: ActionType.ADD_MEMBER as typeof ActionType.ADD_MEMBER,
   payload: { params },
 });
 
@@ -40,6 +49,7 @@ export const apointUser = (params: ApointUserParams) => ({
 
 export type RandomAction =
   | ReturnType<typeof addMembers>
+  | ReturnType<typeof addMember>
   | ReturnType<typeof removeMember>
   | ReturnType<typeof start>
   | ReturnType<typeof stop>

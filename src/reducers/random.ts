@@ -26,6 +26,11 @@ const randomReducer: Reducer<RandomState, RandomAction> = (
         ...state,
         users: action.payload.params.users,
       };
+    case ActionType.ADD_MEMBER:
+      return {
+        ...state,
+        users: [...state.users, action.payload.params.user],
+      };
     case ActionType.REMOVE_MEMBER:
       return {
         ...state,

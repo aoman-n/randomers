@@ -1,4 +1,5 @@
 export const ADD_MEMBERS = 'RANDOM/ADD_MEMBERS';
+export const ADD_MEMBER = 'RANDOM/ADD_MEMBER';
 export const REMOVE_MEMBER = 'RANDOM/REMOVE_MEMBER';
 export const START = 'RANDOM/START';
 export const STOP = 'RANDOM/STOP';

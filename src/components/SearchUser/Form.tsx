@@ -48,7 +48,11 @@ const Form: FC<SearchUserFormProps> = ({
         <Button
           type="submit"
           primary
-          disabled={!searchQuery.length || isLoading}
+          disabled={
+            !searchQuery.length ||
+            isLoading ||
+            !searchedUsers.some(u => u.login === searchQuery)
+          }
           loading={isLoading}
         >
           追加

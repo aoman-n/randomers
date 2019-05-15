@@ -1,12 +1,12 @@
-import React, { FC, useState, useEffect, useCallback } from 'react';
+import React, { FC, FormEvent, useState, useEffect, useCallback } from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { searchUser, SearchUserParams } from '../../actions/github';
 import {
-  addMembers,
+  addMember,
   removeMember,
-  AddMembersParams,
+  AddMemberParams,
   RemoveMemberParams,
 } from '../../actions/random';
 import { RootStateType } from '../../reducers';
@@ -23,7 +23,7 @@ interface StateProps {
 
 interface DispatchProps {
   dispatchSearchUserStart: (params: SearchUserParams) => void;
-  dispatchAddMembers: (params: AddMembersParams) => void;
+  dispatchAddMember: (params: AddMemberParams) => void;
   dispatchRemoveMember: (params: RemoveMemberParams) => void;
 }
 
@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
   bindActionCreators(
     {
       dispatchSearchUserStart: params => searchUser.start(params),
-      dispatchAddMembers: params => addMembers(params),
+      dispatchAddMember: params => addMember(params),
       dispatchRemoveMember: params => removeMember(params),
     },
     dispatch,
@@ -80,7 +80,7 @@ const SearchUserFormContainer: FC<EnhancedFormProps> = ({
   searchedUsers,
   isLoading,
   dispatchSearchUserStart,
-  dispatchAddMembers,
+  dispatchAddMember,
   dispatchRemoveMember,
 }) => {
   const loadSuggestions = (q: string) => {
@@ -91,8 +91,12 @@ const SearchUserFormContainer: FC<EnhancedFormProps> = ({
 
   const { searchQuery, setSearchQuery } = useDebouncedQuery(loadSuggestions);
 
-  const handleSubmit = () => {
-    console.log('handle submit!!!');
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    if (e) {
+      e.preventDefault();
+      const user = searchedUsers.find(u => u.login === searchQuery);
+      if (user) dispatchAddMember({ user });
+    }
   };
 
   return (
