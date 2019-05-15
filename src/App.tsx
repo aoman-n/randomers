@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from 'react-router';
 
 import Home from 'components/Home';
 import Organizations from 'src/components/Organizations/Index';
+import SearchUser from 'src/components/SearchUser';
 import Members from 'src/containers/Organizations/Members';
 import Confirmation from 'containers/Confirmation';
 import Random from 'containers/Random';
@@ -19,6 +20,7 @@ const App: FC = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path={pages.organizations.path} component={Organizations} />
+      <Route path={pages.users.path} component={SearchUser} />
       <Route path="/:organizationName/members" component={Members} />
       <Route path="/confirmation" component={Confirmation} />
       <Route path="/random" component={Random} />

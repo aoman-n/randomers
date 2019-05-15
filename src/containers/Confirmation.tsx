@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { removeMember } from '../actions/random';
 
 import { RootStateType } from '../reducers';
-import { User } from '../services/github/models';
+// import { User } from '../services/github/models';
+import { User } from '../reducers/github';
 import Confirmation from '../components/Confirmation';
 
 interface StateProps {

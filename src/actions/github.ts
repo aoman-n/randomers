@@ -1,7 +1,8 @@
 import { AxiosError } from 'axios';
 
 import * as ActionType from './githubConstants';
-import { User } from '../services/github/models';
+// import { User } from '../services/github/models';
+import { User } from '../reducers/github';
 
 interface GetMembersParams {
   organizationName: string;
@@ -27,7 +28,7 @@ export const getMembers = {
   }),
 };
 
-interface SearchUserParams {
+export interface SearchUserParams {
   q: string;
 }
 

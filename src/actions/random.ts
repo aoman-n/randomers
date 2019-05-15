@@ -1,11 +1,12 @@
-import { User } from 'services/github/models';
+// import { User } from 'services/github/models';
+import { User } from '../reducers/github';
 import * as ActionType from './randomConstants';
 
-interface AddMembersParams {
+export interface AddMembersParams {
   users: User[];
 }
 
-interface RemoveMemberParams {
+export interface RemoveMemberParams {
   userLogin: string;
 }
 

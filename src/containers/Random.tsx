@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import { RootStateType } from '../reducers';
 import { start, stop } from '../actions/random';
-import { User } from '../services/github/models';
+// import { User } from '../services/github/models';
+import { User } from '../reducers/github';
 import Random from '../components/Random';
 
 interface StateProps {

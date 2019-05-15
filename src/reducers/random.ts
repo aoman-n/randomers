@@ -1,7 +1,8 @@
 import { Reducer } from 'redux';
-import { User } from 'services/github/models';
+// import { User } from 'services/github/models';
 import * as ActionType from 'actions/randomConstants';
 import { RandomAction } from 'actions/random';
+import { User } from './github';
 
 export interface RandomState {
   users: User[];

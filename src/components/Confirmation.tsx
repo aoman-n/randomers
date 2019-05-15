@@ -3,7 +3,8 @@ import { FC } from 'react';
 import { jsx, css } from '@emotion/core';
 import { Link } from 'react-router-dom';
 import { Card, Image, Button, Icon } from 'semantic-ui-react';
-import { User } from '../services/github/models';
+// import { User } from '../services/github/models';
+import { User } from '../reducers/github';
 
 import Layout from './Layout';
 
@@ -26,7 +27,7 @@ const Confirmation: FC<ConfirmationProps> = ({
       {users.map(user => (
         <Card key={user.id}>
           <Card.Content>
-            <Image floated="right" size="mini" src={user.avatar_url} />
+            <Image floated="right" size="mini" src={user.avatarUrl} />
             <Card.Header>{user.login}</Card.Header>
           </Card.Content>
           <Card.Content extra>

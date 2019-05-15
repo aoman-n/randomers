@@ -1,8 +1,14 @@
 import { AxiosError } from 'axios';
 import { Reducer } from 'redux';
-import { User } from '../services/github/models';
+// import { User } from '../services/github/models';
 import * as ActionType from '../actions/githubConstants';
 import { GithubActoion } from '../actions/github';
+
+export interface User {
+  id: number;
+  login: string;
+  avatarUrl: string;
+}
 
 export interface GithubState {
   organizationName: string;
@@ -36,6 +42,24 @@ const githubReducer: Reducer<GithubState, GithubActoion> = (
         isLoading: false,
       };
     case ActionType.GET_MEMBERS_FAIL:
+      return {
+        ...state,
+        error: action.payload.error,
+        isLoading: false,
+      };
+    case ActionType.SEARCH_USER_START:
+      return {
+        ...state,
+        users: [],
+        isLoading: true,
+      };
+    case ActionType.SEARCH_USER_SUCCEED:
+      return {
+        ...state,
+        users: action.payload.result.users,
+        isLoading: false,
+      };
+    case ActionType.SEARCH_USER_FAIL:
       return {
         ...state,
         error: action.payload.error,

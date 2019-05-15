@@ -3,7 +3,8 @@ import { FC, useState, useEffect } from 'react';
 import { jsx, css } from '@emotion/core';
 import { Button, Card, Image } from 'semantic-ui-react';
 
-import { User } from '../services/github/models';
+// import { User } from '../services/github/models';
+import { User } from '../reducers/github';
 import Layout from './Layout';
 
 interface RandomProps {
@@ -67,7 +68,7 @@ const Random: FC<RandomProps> = ({
       {isActive && (
         <Card key={activeUser.id}>
           <Card.Content>
-            <Image floated="right" size="mini" src={activeUser.avatar_url} />
+            <Image floated="right" size="mini" src={activeUser.avatarUrl} />
             <Card.Header>{activeUser.login}</Card.Header>
           </Card.Content>
         </Card>
@@ -77,7 +78,7 @@ const Random: FC<RandomProps> = ({
           <p>あなたです！</p>
           <Card key={apointUser.id}>
             <Card.Content>
-              <Image floated="right" size="mini" src={apointUser.avatar_url} />
+              <Image floated="right" size="mini" src={apointUser.avatarUrl} />
               <Card.Header>{apointUser.login}</Card.Header>
             </Card.Content>
           </Card>

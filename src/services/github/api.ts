@@ -1,6 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import { User, SearchUserResult, SearchUser } from './models';
+import { User as FormatedUser } from '../../reducers/github';
 
 interface ApiConfig {
   baseURL: string;
@@ -52,7 +53,11 @@ export const searchUserFactory = (optionConfig: Partial<ApiConfig> = {}) => {
       if (response.status !== 200) {
         throw new Error('Server Error');
       }
-      const users: SearchUser[] = response.data.items;
+      const users: FormatedUser[] = response.data.items.map((user: User) => ({
+        id: user.id,
+        login: user.login,
+        avatarUrl: user.avatar_url,
+      }));
 
       return users;
     } catch (err) {
