@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FC } from 'react';
-import { jsx, css } from '@emotion/core';
+import { jsx } from '@emotion/core';
 import { Link } from 'react-router-dom';
 import { List } from 'semantic-ui-react';
 import Layout from './common/Layout';

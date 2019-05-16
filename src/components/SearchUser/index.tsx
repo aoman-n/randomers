@@ -29,11 +29,9 @@ const SearchUser: FC = () => (
           <Link to={pages.organizations.path}>会社から検索</Link>
         </List.Item>
       </List>
-      {/* {users.length > 1 && ( */}
       <Link to={pages.random.path}>
         <Button color="twitter">{pages.random.title}</Button>
       </Link>
-      {/* )} */}
     </div>
   </Layout>
 );

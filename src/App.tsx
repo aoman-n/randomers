@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { FC } from 'react';
 import { jsx } from '@emotion/core';
-import { Switch, Route, Redirect } from 'react-router';
+import { Switch, Route } from 'react-router';
 
 import Home from 'components/Home';
 import Organizations from 'src/components/Organizations/Index';
@@ -25,7 +25,6 @@ const App: FC = () => (
       <Route path="/confirmation" component={Confirmation} />
       <Route path="/random" component={Random} />
       <Route path="/" component={NotFound} />
-      {/* <Redirect to="/" /> */}
     </Switch>
   </div>
 );

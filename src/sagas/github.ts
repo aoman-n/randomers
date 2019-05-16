@@ -1,4 +1,4 @@
-import { fork, put, all, call, takeLatest, delay } from 'redux-saga/effects';
+import { fork, put, all, call, takeLatest } from 'redux-saga/effects';
 import * as Actions from '../actions/githubConstants';
 import { getMembers, searchUser } from '../actions/github';
 import { getMembersFactory, searchUserFactory } from '../services/github/api';

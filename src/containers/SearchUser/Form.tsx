@@ -3,20 +3,13 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { searchUser, SearchUserParams } from '../../actions/github';
-import {
-  addMember,
-  removeMember,
-  AddMemberParams,
-  RemoveMemberParams,
-} from '../../actions/random';
+import { addMember, AddMemberParams } from '../../actions/random';
 import { RootStateType } from '../../reducers';
-// import { User } from '../../services/github/models';
 import { User } from '../../reducers/github';
 
 import Form from '../../components/SearchUser/Form';
 
 interface StateProps {
-  addedUsers: User[];
   searchedUsers: User[];
   isLoading: boolean;
 }
@@ -24,13 +17,11 @@ interface StateProps {
 interface DispatchProps {
   dispatchSearchUserStart: (params: SearchUserParams) => void;
   dispatchAddMember: (params: AddMemberParams) => void;
-  dispatchRemoveMember: (params: RemoveMemberParams) => void;
 }
 
 type EnhancedFormProps = StateProps & DispatchProps;
 
 const mapStateToProps = (state: RootStateType): StateProps => ({
-  addedUsers: state.random.users,
   searchedUsers: state.github.users,
   isLoading: state.github.isLoading,
 });
@@ -40,7 +31,6 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
     {
       dispatchSearchUserStart: params => searchUser.start(params),
       dispatchAddMember: params => addMember(params),
-      dispatchRemoveMember: params => removeMember(params),
     },
     dispatch,
   );
@@ -76,12 +66,10 @@ const useDebouncedQuery = (onChange: (query: string) => void) => {
 /* ここまで */
 
 const SearchUserFormContainer: FC<EnhancedFormProps> = ({
-  addedUsers,
   searchedUsers,
   isLoading,
   dispatchSearchUserStart,
   dispatchAddMember,
-  dispatchRemoveMember,
 }) => {
   const loadSuggestions = (q: string) => {
     if (q) {
@@ -102,13 +90,11 @@ const SearchUserFormContainer: FC<EnhancedFormProps> = ({
   return (
     <Form
       {...{
-        addedUsers,
         searchedUsers,
         isLoading,
         searchQuery,
         setSearchQuery,
         handleSubmit,
-        dispatchRemoveMember,
       }}
     />
   );

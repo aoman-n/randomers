@@ -19,7 +19,7 @@ const container = css`
 `;
 
 const Members: FC<MembersProps> = ({
-  organizationName = '<会社名>',
+  organizationName = '???',
   users = [],
   isLoading = false,
   handleAddButton,
@@ -46,25 +46,27 @@ const Members: FC<MembersProps> = ({
       {isLoading ? (
         <Spinner />
       ) : (
-        <Card.Group css={container}>
-          {users.map(user => (
-            <Card key={user.id}>
-              <Card.Content>
-                <Image floated="right" size="mini" src={user.avatarUrl} />
-                <Card.Header>{user.login}</Card.Header>
-              </Card.Content>
-              <Card.Content extra>
-                <Checkbox
-                  name={user.login}
-                  id={user.id}
-                  value={user.login}
-                  label={user.login}
-                  onChange={handleChange}
-                />
-              </Card.Content>
-            </Card>
-          ))}
-        </Card.Group>
+        <div>
+          <Card.Group css={container}>
+            {users.map(user => (
+              <Card key={user.id}>
+                <Card.Content>
+                  <Image floated="right" size="mini" src={user.avatarUrl} />
+                  <Card.Header>{user.login}</Card.Header>
+                </Card.Content>
+                <Card.Content extra>
+                  <Checkbox
+                    name={user.login}
+                    id={user.id}
+                    value={user.login}
+                    label={user.login}
+                    onChange={handleChange}
+                  />
+                </Card.Content>
+              </Card>
+            ))}
+          </Card.Group>
+        </div>
       )}
     </Layout>
   );

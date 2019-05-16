@@ -1,18 +1,16 @@
 /** @jsx jsx */
 import { FC, Dispatch, FormEvent } from 'react';
 import { jsx, css } from '@emotion/core';
-import { Input, Button, Icon } from 'semantic-ui-react';
+import { Input, Button } from 'semantic-ui-react';
 
 import { User } from '../../reducers/github';
 
 export interface SearchUserFormProps {
-  addedUsers: User[];
   searchedUsers: User[];
   isLoading: boolean;
   searchQuery: string;
   setSearchQuery: Dispatch<React.SetStateAction<string>>;
-  handleSubmit: any;
-  dispatchRemoveMember: (params: any) => void;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
 const form = css`
@@ -24,13 +22,11 @@ const input = css`
 `;
 
 const Form: FC<SearchUserFormProps> = ({
-  addedUsers,
   searchedUsers,
   isLoading,
   searchQuery,
   setSearchQuery,
   handleSubmit,
-  dispatchRemoveMember,
 }) => {
   return (
     <form css={form} onSubmit={handleSubmit}>

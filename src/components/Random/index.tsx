@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { FC, useState, useEffect } from 'react';
-import { jsx, css } from '@emotion/core';
+import { FC } from 'react';
+import { jsx } from '@emotion/core';
 import { Button, Card, Image } from 'semantic-ui-react';
 
 import { User } from 'src/reducers/github';
@@ -45,13 +45,13 @@ const Random: FC<RandomProps> = ({
       )}
       {apointUser && (
         <div>
-          <p>あなたです！</p>
           <Card key={apointUser.id}>
             <Card.Content>
               <Image floated="right" size="mini" src={apointUser.avatarUrl} />
               <Card.Header>{apointUser.login}</Card.Header>
             </Card.Content>
           </Card>
+          <p>選ばれし者！</p>
         </div>
       )}
     </Layout>

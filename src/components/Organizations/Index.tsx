@@ -1,14 +1,9 @@
 /** @jsx jsx */
 import { FC } from 'react';
-import { jsx, css } from '@emotion/core';
-import { Link } from 'react-router-dom';
-import { List } from 'semantic-ui-react';
+import { jsx } from '@emotion/core';
 import Members from 'containers/Organizations/Members';
-// import GithubInput from './GithubInput';
-// import Form from './Form';
 import Form from 'containers/Organizations/Form';
 import Layout from '../common/Layout';
-// import pages from '../pages';
 
 const Organizations: FC = () => (
   <Layout>

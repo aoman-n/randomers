@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { FC } from 'react';
-import { jsx, css } from '@emotion/core';
+import { jsx } from '@emotion/core';
 import { Link } from 'react-router-dom';
 import { Button, List } from 'semantic-ui-react';
-import { User } from '../../reducers/github';
 
 import RandomUsers from '../../containers/common/RandomUsers';
 import Layout from '../common/Layout';

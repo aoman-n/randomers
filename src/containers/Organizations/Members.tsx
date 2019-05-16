@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
 
 import { RootStateType } from '../../reducers';
-// import { User } from '../../services/github/models';
 import { User } from '../../reducers/github';
 import { addMembers } from '../../actions/random';
 import Members from '../../components/Organizations/Members';

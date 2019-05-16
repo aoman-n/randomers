@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { FC, FormEvent } from 'react';
 import { jsx, css } from '@emotion/core';
-import { Link } from 'react-router-dom';
-import { Input, Button, Icon } from 'semantic-ui-react';
+import { Input, Button } from 'semantic-ui-react';
 
 export interface OrganizationFormProps {
   handleChange?: (newValue: string) => void;
@@ -13,11 +12,6 @@ export interface OrganizationFormProps {
 
 const input = css`
   margin-right: 16px !important;
-`;
-
-const link = css`
-  display: inline-block;
-  height: 100%;
 `;
 
 const Form: FC<OrganizationFormProps> = ({

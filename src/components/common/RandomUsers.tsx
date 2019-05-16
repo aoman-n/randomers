@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FC } from 'react';
-import { jsx, css } from '@emotion/core';
+import { jsx } from '@emotion/core';
 import { Card, Image, Button, Icon } from 'semantic-ui-react';
 import { User } from '../../reducers/github';
 

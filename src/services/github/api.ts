@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
-import { User, SearchUserResult, SearchUser } from './models';
+import { User } from './models';
 import { User as FormatedUser } from '../../reducers/github';
 
 interface ApiConfig {

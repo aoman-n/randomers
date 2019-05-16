@@ -49,7 +49,7 @@ export const apointUser = (params: ApointUserParams) => ({
 
 export const clearApointUser = () => ({
   type: ActionType.CLEAR_APOINT_USER as typeof ActionType.CLEAR_APOINT_USER,
-})
+});
 
 export type RandomAction =
   | ReturnType<typeof addMembers>
