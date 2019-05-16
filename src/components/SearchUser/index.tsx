@@ -6,7 +6,7 @@ import { jsx, css } from '@emotion/core';
 
 import Form from '../../containers/SearchUser/Form';
 import RandomUsers from '../../containers/common/RandomUsers';
-import Layout from '../Layout';
+import Layout from '../common/Layout';
 import pages from '../../pages';
 
 const form = css`

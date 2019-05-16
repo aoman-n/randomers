@@ -3,8 +3,7 @@ import { FC } from 'react';
 import { jsx, css } from '@emotion/core';
 import { Link } from 'react-router-dom';
 import { List } from 'semantic-ui-react';
-import GithubInput from './Organizations/GithubInput';
-import Layout from './Layout';
+import Layout from './common/Layout';
 import pages from '../pages';
 
 const Home: FC = () => (

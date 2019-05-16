@@ -43,7 +43,7 @@ module.exports = {
     'import/resolver': {
       webpack: {config: path.join(__dirname, '/webpack.dev.js')},
       node: {
-        extensions: ['.js', 'jsx', '.ts', '.tsx'],
+        extensions: ['.tsx', '.ts', 'jsx', '.js'],
       },
     },
     react: {
@@ -77,7 +77,7 @@ module.exports = {
     'react/jsx-filename-extension': [
       'error',
       {
-        extensions: ['jsx', 'tsx'],
+        extensions: ['tsx', 'jsx'],
       },
     ],
     'react/jsx-one-expression-per-line': 'off',

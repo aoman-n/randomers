@@ -4,7 +4,7 @@ import { jsx, css } from '@emotion/core';
 import { Card, Image, Button, Checkbox } from 'semantic-ui-react';
 
 import Spinner from 'components/common/Spinner';
-import Layout from '../Layout';
+import Layout from '../common/Layout';
 import { User } from '../../reducers/github';
 
 export interface MembersProps {

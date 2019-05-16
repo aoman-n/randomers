@@ -9,8 +9,8 @@ import SearchUser from 'src/components/SearchUser';
 import Members from 'src/containers/Organizations/Members';
 import Confirmation from 'components/Confirmation';
 import Random from 'containers/Random';
-import Header from 'components/Header';
-import NotFound from 'components/NotFound';
+import Header from 'src/components/common/Header';
+import NotFound from 'src/components/common/NotFound';
 
 import pages from './pages';
 

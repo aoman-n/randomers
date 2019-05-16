@@ -7,7 +7,7 @@ import Members from 'containers/Organizations/Members';
 // import GithubInput from './GithubInput';
 // import Form from './Form';
 import Form from 'containers/Organizations/Form';
-import Layout from '../Layout';
+import Layout from '../common/Layout';
 // import pages from '../pages';
 
 const Organizations: FC = () => (

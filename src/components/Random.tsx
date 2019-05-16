@@ -3,9 +3,8 @@ import { FC, useState, useEffect } from 'react';
 import { jsx, css } from '@emotion/core';
 import { Button, Card, Image } from 'semantic-ui-react';
 
-// import { User } from '../services/github/models';
 import { User } from '../reducers/github';
-import Layout from './Layout';
+import Layout from './common/Layout';
 
 interface RandomProps {
   isActive: boolean;

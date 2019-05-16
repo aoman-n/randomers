@@ -3,11 +3,11 @@ import { FC } from 'react';
 import { jsx, css } from '@emotion/core';
 import { Link } from 'react-router-dom';
 import { Button, List } from 'semantic-ui-react';
-import { User } from '../reducers/github';
+import { User } from '../../reducers/github';
 
-import RandomUsers from '../containers/common/RandomUsers';
-import Layout from './Layout';
-import pages from '../pages';
+import RandomUsers from '../../containers/common/RandomUsers';
+import Layout from '../common/Layout';
+import pages from '../../pages';
 
 const Confirmation: FC = () => (
   <Layout>
