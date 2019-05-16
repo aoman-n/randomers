@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
@@ -37,6 +37,17 @@ const mapDispathToProps = (dispatch: Dispatch): DispatchProps =>
     dispatch,
   );
 
+const useRandomUser = (users: User[]): [User, () => void] => {
+  const initialUser = users[0];
+  const [activeUser, switchActiveUser] = useState(initialUser);
+
+  const updateActiveUser = () => {
+    switchActiveUser(users[Math.floor(Math.random() * users.length)]);
+  };
+
+  return [activeUser, updateActiveUser];
+};
+
 const RandomContainer: FC<EnhancedRandomProps> = ({
   isActive,
   apointUser,
@@ -45,13 +56,40 @@ const RandomContainer: FC<EnhancedRandomProps> = ({
   stopRandom,
   clearRandom,
 }) => {
+  const [activeUser, updateActiveUser] = useRandomUser(users);
+  const [intervalId, updateIntervalId] = useState<NodeJS.Timer | null>(null);
+
+  const handleStartButton = () => {
+    const id: NodeJS.Timer = setInterval(() => {
+      updateActiveUser();
+    }, 10);
+    updateIntervalId(id);
+    startRandom();
+  };
+
+  /* 参考:https://blog.kubosho.com/entry/setinterval-trap-on-typescript/ */
+  const handleStopButton = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+    updateIntervalId(null);
+    stopRandom(activeUser);
+  };
+
   useEffect(() => {
     return () => clearRandom();
   }, []);
 
   return (
     <Random
-      {...{ isActive, apointUser, users, startRandom, stopRandom, clearRandom }}
+      {...{
+        isActive,
+        apointUser,
+        users,
+        handleStartButton,
+        handleStopButton,
+        activeUser,
+      }}
     />
   );
 };

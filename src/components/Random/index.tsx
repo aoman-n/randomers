@@ -8,50 +8,21 @@ import Layout from 'src/components/common/Layout';
 
 interface RandomProps {
   isActive: boolean;
-  startRandom: () => void;
-  stopRandom: (user: User) => void;
   apointUser: User | null;
   users: User[];
+  activeUser: User;
+  handleStartButton: () => void;
+  handleStopButton: () => void;
 }
-
-const useRandomUser = (users: User[]): [User, () => void] => {
-  const initialUser = users[0];
-  const [activeUser, switchActiveUser] = useState(initialUser);
-
-  const updateActiveUser = () => {
-    switchActiveUser(users[Math.floor(Math.random() * users.length)]);
-  };
-
-  return [activeUser, updateActiveUser];
-};
 
 const Random: FC<RandomProps> = ({
   users,
   isActive,
-  startRandom,
-  stopRandom,
   apointUser,
+  activeUser,
+  handleStartButton,
+  handleStopButton,
 }) => {
-  const [activeUser, updateActiveUser] = useRandomUser(users);
-  const [intervalId, updateIntervalId] = useState<NodeJS.Timer | null>(null);
-
-  const handleStartButton = () => {
-    const id: NodeJS.Timer = setInterval(() => {
-      updateActiveUser();
-    }, 10);
-    updateIntervalId(id);
-    startRandom();
-  };
-
-  /* 参考:https://blog.kubosho.com/entry/setinterval-trap-on-typescript/ */
-  const handleStopButton = () => {
-    if (intervalId) {
-      clearInterval(intervalId);
-    }
-    updateIntervalId(null);
-    stopRandom(activeUser);
-  };
-
   return (
     <Layout>
       <h3>ボタンを押してスタートしてください。</h3>

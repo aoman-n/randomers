@@ -68,6 +68,11 @@ const randomReducer: Reducer<RandomState, RandomAction> = (
         ...state,
         apointUser: action.payload.user,
       };
+    case ActionType.CLEAR_APOINT_USER:
+      return {
+        ...state,
+        apointUser: null,
+      };
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const _: never = action;
