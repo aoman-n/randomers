@@ -21,16 +21,29 @@ const randomReducer: Reducer<RandomState, RandomAction> = (
   action: RandomAction,
 ) => {
   switch (action.type) {
-    case ActionType.ADD_MEMBERS:
+    case ActionType.ADD_MEMBERS: {
+      /* 重複をチェックしユーザーを追加 */
+      const { users } = action.payload.params;
+      const checkedUsers: User[] = users.filter(
+        u => !state.users.some(uu => uu.id === u.id),
+      );
+
       return {
         ...state,
-        users: action.payload.params.users,
+        users: [...state.users, ...checkedUsers],
       };
-    case ActionType.ADD_MEMBER:
+    }
+    case ActionType.ADD_MEMBER: {
+      /* 重複をチェックしユーザーを追加 */
+      const { user } = action.payload.params;
+      const exists: boolean = state.users.some(u => u.id === user.id);
+      const newUsers: User[] = exists ? state.users : [...state.users, user];
+
       return {
         ...state,
-        users: [...state.users, action.payload.params.user],
+        users: newUsers,
       };
+    }
     case ActionType.REMOVE_MEMBER:
       return {
         ...state,
