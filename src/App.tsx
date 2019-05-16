@@ -7,7 +7,7 @@ import Home from 'components/Home';
 import Organizations from 'src/components/Organizations/Index';
 import SearchUser from 'src/components/SearchUser';
 import Members from 'src/containers/Organizations/Members';
-import Confirmation from 'containers/Confirmation';
+import Confirmation from 'components/Confirmation';
 import Random from 'containers/Random';
 import Header from 'components/Header';
 import NotFound from 'components/NotFound';

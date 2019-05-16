@@ -65,6 +65,8 @@ const githubReducer: Reducer<GithubState, GithubActoion> = (
         error: action.payload.error,
         isLoading: false,
       };
+    case ActionType.CLEAR:
+      return initialState;
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const _: never = action;

@@ -52,10 +52,15 @@ export const searchUser = {
   }),
 };
 
+export const clear = () => ({
+  type: ActionType.CLEAR as typeof ActionType.CLEAR,
+});
+
 export type GithubActoion =
   | ReturnType<typeof getMembers.start>
   | ReturnType<typeof getMembers.succeed>
   | ReturnType<typeof getMembers.fail>
   | ReturnType<typeof searchUser.start>
   | ReturnType<typeof searchUser.succeed>
-  | ReturnType<typeof searchUser.fail>;
+  | ReturnType<typeof searchUser.fail>
+  | ReturnType<typeof clear>;

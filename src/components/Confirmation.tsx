@@ -2,46 +2,17 @@
 import { FC } from 'react';
 import { jsx, css } from '@emotion/core';
 import { Link } from 'react-router-dom';
-import { Card, Image, Button, Icon, List } from 'semantic-ui-react';
+import { Button, List } from 'semantic-ui-react';
 import { User } from '../reducers/github';
 
+import RandomUsers from '../containers/common/RandomUsers';
 import Layout from './Layout';
 import pages from '../pages';
 
-interface ConfirmationProps {
-  users: User[];
-  dispatchRemoveMember: (userLogin: string) => void;
-}
-
-const container = css`
-  margin-bottom: 20px !important;
-`;
-
-const Confirmation: FC<ConfirmationProps> = ({
-  users,
-  dispatchRemoveMember,
-}) => (
+const Confirmation: FC = () => (
   <Layout>
     <h3>追加したメンバー:</h3>
-    <Card.Group css={container}>
-      {users.map(user => (
-        <Card key={user.id}>
-          <Card.Content>
-            <Image floated="right" size="mini" src={user.avatarUrl} />
-            <Card.Header>{user.login}</Card.Header>
-          </Card.Content>
-          <Card.Content extra>
-            <Button
-              color="red"
-              onClick={() => dispatchRemoveMember(user.login)}
-            >
-              <Icon name="trash" />
-              削除
-            </Button>
-          </Card.Content>
-        </Card>
-      ))}
-    </Card.Group>
+    <RandomUsers />
     <List>
       <List.Header>もっとメンバーを追加</List.Header>
       <List.Item>
